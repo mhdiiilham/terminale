@@ -108,7 +108,7 @@ success "Go tools done"
 header "Apps"
 for cask in \
   ghostty \
-  visual-studio-code \
+  zed \
   raycast \
   rectangle \
   orbstack \

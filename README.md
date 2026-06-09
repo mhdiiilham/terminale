@@ -59,7 +59,7 @@ Already installed tools are automatically skipped — safe to run multiple times
 | App | What it does |
 |---|---|
 | [Ghostty](https://ghostty.org) | Terminal emulator |
-| [VS Code](https://code.visualstudio.com) | Editor |
+| [Zed](https://zed.dev) | Editor |
 | [Raycast](https://raycast.com) | App launcher, clipboard history, window management |
 | [Rectangle](https://rectangleapp.com) | Window snapping with keyboard shortcuts |
 | [OrbStack](https://orbstack.dev) | Lightweight Docker Desktop replacement — same `docker` and `docker compose` commands |
