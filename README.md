@@ -62,6 +62,7 @@ Already installed tools are automatically skipped — safe to run multiple times
 | [VS Code](https://code.visualstudio.com) | Editor |
 | [Raycast](https://raycast.com) | App launcher, clipboard history, window management |
 | [Rectangle](https://rectangleapp.com) | Window snapping with keyboard shortcuts |
+| [OrbStack](https://orbstack.dev) | Lightweight Docker Desktop replacement — same `docker` and `docker compose` commands |
 | JetBrainsMono Nerd Font | Font used in Ghostty (includes icons for eza) |
 
 ## Shell shortcuts

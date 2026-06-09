@@ -111,6 +111,7 @@ for cask in \
   visual-studio-code \
   raycast \
   rectangle \
+  orbstack \
   font-jetbrains-mono-nerd-font; do
   cinstall "$cask"
 done
