@@ -23,9 +23,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
-# zoxide — smart cd that learns your frequent dirs
-eval "$(zoxide init zsh --cmd cd)"
-
 # direnv — auto-load .envrc per project directory
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
@@ -59,3 +56,6 @@ alias grep='grep --color=auto'
 # Docker CLI completions
 fpath=(/Users/mo/.docker/completions $fpath)
 autoload -Uz compinit && compinit
+
+# zoxide — smart cd that learns your frequent dirs (must be last, after compinit)
+eval "$(zoxide init zsh --cmd cd)"
