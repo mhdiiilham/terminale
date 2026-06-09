@@ -134,9 +134,9 @@ BASIC_IDS=(
 _KEY=""
 _read_key() {
   local _esc=$'\x1b' _rest=""
-  IFS= read -r -s -n1 _KEY
+  IFS= read -r -s -n1 _KEY < /dev/tty
   if [[ "$_KEY" == "$_esc" ]]; then
-    IFS= read -r -s -n2 -t 0.15 _rest || true
+    IFS= read -r -s -n2 -t 0.15 _rest < /dev/tty || true
     _KEY="${_KEY}${_rest}"
   fi
 }
@@ -265,9 +265,7 @@ paginate() {
 }
 
 # ── Run interactive flow ───────────────────────────────────────────────────────
-# Redirect stdin to /dev/tty so the menu works even when piped via curl | bash
 if [ -e /dev/tty ]; then
-  exec 0< /dev/tty
   choose_mode
   if [[ "$MODE" == "basic" ]]; then apply_basic; else paginate; fi
   _restore; clear; trap - EXIT INT TERM
