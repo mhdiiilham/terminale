@@ -112,14 +112,14 @@ _cur_name="" ; _cur_items=""
 for _i in "${!ENTRIES[@]}"; do
   IFS='|' read -r _t _label _ <<< "${ENTRIES[$_i]}"
   if [[ "$_t" == "H" ]]; then
-    [[ -n "$_cur_name" ]] && { GROUPS+=("$_cur_name"); GROUP_ITEMS+=("$_cur_items"); }
+    if [[ -n "$_cur_name" ]]; then GROUPS+=("$_cur_name"); GROUP_ITEMS+=("$_cur_items"); fi
     _cur_name="$_label" ; _cur_items=""
   else
     SELECTED[$_i]=0
     _cur_items="$_cur_items $_i"
   fi
 done
-[[ -n "$_cur_name" ]] && { GROUPS+=("$_cur_name"); GROUP_ITEMS+=("$_cur_items"); }
+if [[ -n "$_cur_name" ]]; then GROUPS+=("$_cur_name"); GROUP_ITEMS+=("$_cur_items"); fi
 unset _i _t _label _cur_name _cur_items
 
 # Basic set — original tools only (pre-expansion)
@@ -281,7 +281,7 @@ echo ""
 echo "Installing:"
 for i in "${!ENTRIES[@]}"; do
   IFS='|' read -r type label _ <<< "${ENTRIES[$i]}"
-  [[ "$type" == "H" ]] && continue
+  if [[ "$type" == "H" ]]; then continue; fi
   if [ "${SELECTED[$i]:-0}" -eq 1 ]; then
     echo "  ✓  $label"
   fi
@@ -365,8 +365,8 @@ success "Homebrew ready"
 # ── 2. Install selected items ─────────────────────────────────────────────────
 for i in "${!ENTRIES[@]}"; do
   IFS='|' read -r type label id <<< "${ENTRIES[$i]}"
-  [[ "$type" == "H" ]] && continue
-  [ "${SELECTED[$i]:-0}" -eq 0 ] && continue
+  if [[ "$type" == "H" ]]; then continue; fi
+  if [ "${SELECTED[$i]:-0}" -eq 0 ]; then continue; fi
 
   # Note: can't use "case $type|$id in F|*)" — | in case is OR, not literal pipe
   if [[ "$type" == "F" ]]; then
