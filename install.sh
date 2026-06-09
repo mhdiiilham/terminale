@@ -2,16 +2,16 @@
 # install.sh — Bootstrap terminal config on a new Mac
 #
 # One-liner usage (after pushing to GitHub):
-#   curl -fsSL https://raw.githubusercontent.com/mhdiiilham/terminale/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/mhdiiilham/sebash-duls/main/install.sh | bash
 #
 # Or clone and run locally:
-#   git clone https://github.com/mhdiiilham/terminale && cd terminale && bash install.sh
+#   git clone https://github.com/mhdiiilham/sebash-duls && cd sebash-duls && bash install.sh
 
 set -e
 
 # ── Config ────────────────────────────────────────────────────────────────────
 GITHUB_USER="mhdiiilham"
-GITHUB_REPO="terminale"
+GITHUB_REPO="sebash-duls"
 BRANCH="main"
 RAW="https://raw.githubusercontent.com/$GITHUB_USER/$GITHUB_REPO/$BRANCH"
 # ─────────────────────────────────────────────────────────────────────────────
@@ -24,11 +24,11 @@ header()  { echo ""; echo "── $* ──"; }
 # Idempotent brew helpers — skip if already installed
 binstall() {
   if brew list --formula "$1" &>/dev/null || command -v "$1" &>/dev/null; then skip "$1"
-  else brew install "$1"; fi
+  else brew install -q "$1"; fi
 }
 cinstall() {
   if brew list --cask "$1" &>/dev/null; then skip "$1"
-  else brew install --cask "$1"; fi
+  else brew install -q --cask "$1"; fi
 }
 
 echo ""

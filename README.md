@@ -1,17 +1,17 @@
-# terminale
+# sebash-duls
 
 My terminal setup. One command to go from a fresh Mac to a fully configured dev environment.
 
 ## Quick install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mhdiiilham/terminale/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mhdiiilham/sebash-duls/main/install.sh | bash
 ```
 
 Or clone and run locally:
 
 ```bash
-git clone https://github.com/mhdiiilham/terminale && cd terminale && bash install.sh
+git clone https://github.com/mhdiiilham/sebash-duls && cd sebash-duls && bash install.sh
 ```
 
 Already installed tools are automatically skipped — safe to run multiple times.
@@ -136,3 +136,7 @@ direnv allow   # run once to approve the .envrc
 ## Drag & drop files
 
 In Ghostty, drag any file from Finder into the terminal window — its path gets inserted at the cursor automatically.
+
+---
+
+*Named after [@dmtrxw](https://github.com/dmtrxw)'s [sebats-duls](https://github.com/dmtrxw/sebats-duls). In his memory.*
