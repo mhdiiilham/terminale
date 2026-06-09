@@ -174,14 +174,14 @@ choose_mode() {
 }
 
 apply_basic() {
+  local _i _t _id _bid
   for _i in "${!ENTRIES[@]}"; do
     IFS='|' read -r _t _ _id <<< "${ENTRIES[$_i]}"
-    [[ "$_t" == "H" ]] && continue
+    if [[ "$_t" == "H" ]]; then continue; fi
     for _bid in "${BASIC_IDS[@]}"; do
-      [[ "$_id" == "$_bid" ]] && { SELECTED[$_i]=1; break; }
+      if [[ "$_id" == "$_bid" ]]; then SELECTED[$_i]=1; break; fi
     done
   done
-  unset _i _t _id _bid
 }
 
 # ── Paginated category picker ──────────────────────────────────────────────────
@@ -269,14 +269,14 @@ paginate() {
 if [ -e /dev/tty ]; then
   exec 0< /dev/tty
   choose_mode
-  [[ "$MODE" == "basic" ]] && apply_basic || paginate
+  if [[ "$MODE" == "basic" ]]; then apply_basic; else paginate; fi
   _restore; clear; trap - EXIT INT TERM
 else
   echo "No TTY available — cannot show interactive menu."
   exit 1
 fi
 
-# Print summary
+# Print summary — only show what will actually be installed
 echo ""
 echo "Installing:"
 for i in "${!ENTRIES[@]}"; do
@@ -284,8 +284,6 @@ for i in "${!ENTRIES[@]}"; do
   [[ "$type" == "H" ]] && continue
   if [ "${SELECTED[$i]:-0}" -eq 1 ]; then
     echo "  ✓  $label"
-  else
-    echo "  –  $label (skipped)"
   fi
 done
 echo ""
