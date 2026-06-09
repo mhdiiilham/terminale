@@ -152,6 +152,7 @@ choose_mode() {
     clear
     echo ""
     echo "  ┌─────────────────────────────────────┐"
+    echo "  │            SEBASH DULS              │"
     echo "  │      Terminal config installer      │"
     echo "  └─────────────────────────────────────┘"
     echo ""
